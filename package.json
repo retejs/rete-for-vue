@@ -1,0 +1,45 @@
+{
+    "name": "rete-for-vue",
+    "displayName": "Rete for Vue",
+    "description": "",
+    "version": "0.0.1",
+    "publisher": "Ni55aN",
+    "engines": {
+        "vscode": "^1.28.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.sayHello"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.sayHello",
+                "title": "Yeah!"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.21",
+        "tslint": "^5.8.0",
+        "@types/node": "^8.10.25",
+        "@types/mocha": "^2.2.42"
+    },
+    "dependencies": {
+        "rete": "^1.0.0-alpha.10",
+        "rete-area-plugin": "^0.2.0",
+        "rete-connection-plugin": "^0.2.1",
+        "rete-vue-render-plugin": "^0.2.3"
+    }
+}
