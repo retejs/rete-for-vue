@@ -2,10 +2,9 @@
   "name": "rete-for-vue-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "build": "webpack .",
-    "build:dev": "webpack --watch --progress ."
+    "build": "webpack --config webpack.config.js",
+    "build:dev": "webpack --watch --progress --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +15,10 @@
   },
   "devDependencies": {
     "html-webpack-plugin": "^3.2.0",
+    "pug": "^2.0.3",
+    "pug-plain-loader": "^1.0.0",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.17",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
   }
