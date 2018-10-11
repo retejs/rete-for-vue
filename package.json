@@ -11,14 +11,14 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:extension.rete4vue"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.sayHello",
-                "title": "Yeah!"
+                "command": "extension.rete4vue",
+                "title": "Open Rete for Vue"
             }
         ]
     },
@@ -40,6 +40,7 @@
         "rete": "^1.0.0-alpha.10",
         "rete-area-plugin": "^0.2.0",
         "rete-connection-plugin": "^0.2.1",
-        "rete-vue-render-plugin": "^0.2.3"
+        "rete-vue-render-plugin": "^0.2.3",
+        "write": "^1.0.3"
     }
 }
