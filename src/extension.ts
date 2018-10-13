@@ -2,17 +2,13 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
-// @ts-ignore
-import * as write from 'write';
-import { genVueFile } from './vue/file';
-
-interface Message {
-    components: Array<{ name: string, children: Array<any>, path: string }>;
-}
+import generate from './vue/generate';
+import reverse from './vue/reverse';
 
 function createViewPanel(context: vscode.ExtensionContext) {
     const panel = vscode.window.createWebviewPanel('rete4vue', "Rete for Vue", vscode.ViewColumn.One, {
         enableScripts: true,
+        retainContextWhenHidden: true,
         localResourceRoots: [
             vscode.Uri.file(path.join(context.extensionPath, 'app', 'dist'))
         ]
@@ -28,18 +24,25 @@ async function onDidReceiveMessage(msg: Message) {
     if(!root) {
         return vscode.window.showErrorMessage('Working folder isn\'t open');
     }
-    if (!msg.components.length) { 
-       return;
+
+    switch (msg.type) {
+        case 'GENERATE': 
+            try {
+                await generate(root, msg.payload);
+                vscode.window.showInformationMessage(`Files have been written to ${root}/rete4vue folder`);
+            } catch (e) {
+                vscode.window.showErrorMessage(e.message);
+            }
+            break;
+        case 'REVERSE':
+            try {
+                await reverse(root, msg.payload);
+                vscode.window.showInformationMessage(`Files have been written to ${root}/rete4vue folder`);
+            } catch (e) {
+                vscode.window.showErrorMessage(e.message);
+            }
+        break;
     }
-   
-    await Promise.all(msg.components.map(async c => {
-        let path = root+'/rete2vue'+c.path+'Index.vue';
-        await write.promise(path, genVueFile(c.children));
-
-        console.log(`File wrote ${path}`);
-    }));
-
-    vscode.window.showInformationMessage(`Files have been written to ${root}/rete4vue folder`);
 }
 
 export function activate(context: vscode.ExtensionContext) {

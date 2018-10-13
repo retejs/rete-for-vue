@@ -37,6 +37,8 @@
         "@types/mocha": "^2.2.42"
     },
     "dependencies": {
+        "eslint": "^5.7.0",
+        "promise-fs": "^2.0.1",
         "rete": "^1.0.0-alpha.10",
         "rete-area-plugin": "^0.2.0",
         "rete-connection-plugin": "^0.2.1",
