@@ -1,4 +1,4 @@
-# Rete for Vue
+# Rete for Vue (experimental)
 
 VS Code extension for generation of Vue.js component using Rete.js.
 
